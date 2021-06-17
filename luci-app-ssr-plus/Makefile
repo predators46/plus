@@ -45,34 +45,32 @@ LUCI_DEPENDS:=+coreutils +coreutils-base64 +dns2socks +dnsmasq-full +ipset \
 define Package/$(PKG_NAME)/config
 config PACKAGE_$(PKG_NAME)_INCLUDE_Kcptun
 	bool "Include Kcptun"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_NaiveProxy
 	bool "Include NaiveProxy"
-	depends on !(arc||armeb||mips||mips64||powerpc)
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Redsocks2
 	bool "Include Redsocks2"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Libev_Client
 	bool "Include Shadowsocks Libev Client"
-	default y if !aarch64
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Libev_Server
 	bool "Include Shadowsocks Libev Server"
-	default y if i386||x86_64||arm
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Rust_Client
 	bool "Include Shadowsocks Rust Client"
 	depends on aarch64||arm||i386||mips||mipsel||x86_64
-	default y if aarch64
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Rust_Server
 	bool "Include Shadowsocks Rust Server"
-	depends on aarch64||arm||i386||mips||mipsel||x86_64
-	default y if aarch64
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_ShadowsocksR_Libev_Client
 	bool "Include ShadowsocksR Libev Client"
@@ -88,15 +86,15 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_Simple_Obfs
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Trojan
 	bool "Include Trojan"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Plugin
 	bool "Include Shadowsocks V2ray Plugin"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Xray
 	bool "Include Xray"
-	default y if aarch64||arm||i386||x86_64
+	default y
 endef
 
 define Package/$(PKG_NAME)/conffiles
