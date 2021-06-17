@@ -154,25 +154,6 @@ s = m:field(DummyValue, "google", translate("Google Connectivity"))
 s.value = translate("No Check")
 s.template = "shadowsocksr/check"
 
-s = m:field(DummyValue, "baidu", translate("Baidu Connectivity"))
-s.value = translate("No Check")
-s.template = "shadowsocksr/check"
-
-s = m:field(DummyValue, "gfw_data", translate("GFW List Data"))
-s.rawhtml = true
-s.template = "shadowsocksr/refresh"
-s.value = gfw_count .. " " .. translate("Records")
-
-s = m:field(DummyValue, "ip_data", translate("China IP Data"))
-s.rawhtml = true
-s.template = "shadowsocksr/refresh"
-s.value = ip_count .. " " .. translate("Records")
-
-s = m:field(DummyValue, "nfip_data", translate("Netflix IP Data"))
-s.rawhtml = true
-s.template = "shadowsocksr/refresh"
-s.value = nfip_count .. " " .. translate("Records")
-
 if uci:get_first("shadowsocksr", 'global', 'adblock', '0') == '1' then
 	s = m:field(DummyValue, "ad_data", translate("Advertising Data"))
 	s.rawhtml = true
