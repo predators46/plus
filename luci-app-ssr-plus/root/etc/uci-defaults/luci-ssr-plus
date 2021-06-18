@@ -12,16 +12,6 @@ set firewall.shadowsocksr.reload=1
 commit firewall
 EOF
 rm -rf /etc/config/shadowsocksr-opkg /etc/ssrplus/*opkg
-touch /etc/ssrplus/china_ssr.txt
-touch /etc/ssrplus/deny.list
-touch /etc/ssrplus/white.list
-touch /etc/ssrplus/black.list
-touch /etc/ssrplus/netflix.list
-touch /etc/ssrplus/netflixip.list
-touch /etc/ssrplus/gfw_base.conf
-touch /etc/ssrplus/gfw_list.conf
-touch /etc/ssrplus/oversea_list.conf
-touch /etc/ssrplus/ad.conf
 touch /etc/config/shadowsocksr
 if [ ! -s "/etc/config/shadowsocksr" ]; then
 /etc/init.d/shadowsocksr reset
