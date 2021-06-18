@@ -3,7 +3,7 @@
 -- Licensed to the public under the GNU General Public License v3.
 local m, s, sec, o, kcp_enable
 local uci = luci.model.uci.cursor()
-m = Map("shadowsocksr", translate("ShadowSocksR Plus+ Settings"), translate("<h3></h3>"))
+m = Map("shadowsocksr", translate("ShadowSocksR Plus"), translate("<h3></h3>"))
 
 m:section(SimpleSection).template = "shadowsocksr/status"
 
@@ -42,20 +42,6 @@ for _, key in pairs(key_table) do
 	o:value(key, server_table[key])
 end
 
-o = s:option(ListValue, "netflix_server", translate("Netflix Node"))
-o:value("nil", translate("Disable"))
-o:value("same", translate("Same as Global Server"))
-for _, key in pairs(key_table) do
-	o:value(key, server_table[key])
-end
-o.default = "nil"
-o.rmempty = false
-
-o = s:option(Flag, "netflix_proxy", translate("External Proxy Mode"))
-o.rmempty = false
-o.description = translate("Forward Netflix Proxy through Main Proxy")
-o.default = "0"
-
 o = s:option(ListValue, "threads", translate("Multi Threads Option"))
 o:value("0", translate("Auto Threads"))
 o:value("1", translate("1 Thread"))
@@ -70,16 +56,15 @@ o.default = "0"
 o.rmempty = false
 
 o = s:option(ListValue, "run_mode", translate("Running Mode"))
-o:value("gfw", translate("GFW List Mode"))
 o:value("router", translate("IP Route Mode"))
 o:value("all", translate("Global Mode"))
 o:value("oversea", translate("Oversea Mode"))
-o.default = gfw
+o.default = router
 
 o = s:option(ListValue, "dports", translate("Proxy Ports"))
 o:value("1", translate("All Ports"))
 o:value("2", translate("Only Common Ports"))
-o.default = 1
+o.default = 2
 
 o = s:option(ListValue, "pdnsd_enable", translate("Resolve Dns Mode"))
 o:value("1", translate("Use Pdnsd tcp query and cache"))
